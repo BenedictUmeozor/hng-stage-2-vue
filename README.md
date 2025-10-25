@@ -2,8 +2,8 @@
 
 A modern, full-featured ticket management application built with Vue 3 Composition API, TypeScript, and Tailwind CSS. This application provides a complete solution for managing support tickets with authentication, dashboard analytics, and full CRUD operations.
 
-🔗 **Live Demo:** [Coming Soon]  
-📦 **Repository:** [Coming Soon]
+🔗 **Live Demo:** [https://hng-stage-2-vue-six.vercel.app](https://hng-stage-2-vue-six.vercel.app)  
+📦 **Repository:** [https://github.com/BenedictUmeozor/hng-stage-2-vue](https://github.com/BenedictUmeozor/hng-stage-2-vue)
 
 ## 🚀 Technologies Used
 
@@ -54,8 +54,8 @@ src/
 ### 1. Clone the Repository
 
 ```bash
-git clone [repository-url]
-cd vue
+git clone https://github.com/BenedictUmeozor/hng-stage-2-vue.git
+cd hng-stage-2-vue
 ```
 
 ### 2. Install Dependencies
@@ -367,8 +367,8 @@ MIT License - Feel free to use this project for learning or commercial purposes.
 
 ## 👤 Author
 
-**HNG Stage 1 Project**  
-Built with Vue 3 Composition API, TypeScript, and Tailwind CSS
+**Benedict Umeozor**  
+GitHub: [@BenedictUmeozor](https://github.com/BenedictUmeozor)
 
 ---
 
