@@ -1,6 +1,17 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-// No auth yet - Feature #2 will add useAuth composable
+import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useAuthStore } from '@/stores/auth'
+
+const router = useRouter()
+const authStore = useAuthStore()
+const { isAuthenticated } = storeToRefs(authStore)
+
+const handleLogout = () => {
+  authStore.logout()
+  router.push('/')
+}
 </script>
 
 <template>
@@ -12,18 +23,34 @@
         TicketFlow
       </RouterLink>
       <nav class="flex items-center gap-2 sm:gap-4">
-        <RouterLink
-          to="/auth/login"
-          class="rounded-md px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 sm:px-4 sm:text-base"
-        >
-          Login
-        </RouterLink>
-        <RouterLink
-          to="/auth/signup"
-          class="rounded-md bg-blue-600 px-3 py-2 text-sm text-white transition-colors hover:bg-blue-700 sm:px-4 sm:text-base"
-        >
-          Get Started
-        </RouterLink>
+        <template v-if="isAuthenticated">
+          <RouterLink
+            to="/dashboard"
+            class="rounded-md px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 sm:px-4 sm:text-base"
+          >
+            Dashboard
+          </RouterLink>
+          <button
+            @click="handleLogout"
+            class="rounded-md border border-blue-600 px-3 py-2 text-sm text-blue-600 transition-colors hover:bg-blue-50 sm:px-4 sm:text-base"
+          >
+            Logout
+          </button>
+        </template>
+        <template v-else>
+          <RouterLink
+            to="/auth/login"
+            class="rounded-md px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 sm:px-4 sm:text-base"
+          >
+            Login
+          </RouterLink>
+          <RouterLink
+            to="/auth/signup"
+            class="rounded-md bg-blue-600 px-3 py-2 text-sm text-white transition-colors hover:bg-blue-700 sm:px-4 sm:text-base"
+          >
+            Get Started
+          </RouterLink>
+        </template>
       </nav>
     </div>
   </header>

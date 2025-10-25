@@ -1,9 +1,10 @@
 <script setup lang="ts">
-// No logic needed - RouterView handles everything
+import ToastContainer from '@/components/ui/ToastContainer.vue'
 </script>
 
 <template>
   <RouterView />
+  <ToastContainer />
 </template>
 
 <style scoped>

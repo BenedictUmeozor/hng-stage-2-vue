@@ -11,3 +11,34 @@ export interface FeatureCardProps {
   title: string
   description: string
 }
+
+export interface User {
+  id: string
+  name: string
+  email: string
+}
+
+export interface AuthState {
+  isAuthenticated: boolean
+  user: User | null
+  token: string | null
+  loading: boolean
+}
+
+export interface LoginFormData {
+  email: string
+  password: string
+}
+
+export interface SignupFormData {
+  name: string
+  email: string
+  password: string
+  confirmPassword: string
+}
+
+export interface ToastType {
+  id: string
+  type: 'success' | 'error' | 'info' | 'warning'
+  message: string
+}
