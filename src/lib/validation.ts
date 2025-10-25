@@ -1,4 +1,4 @@
-import type { LoginFormData, SignupFormData } from '@/types'
+import type { LoginFormData, SignupFormData, TicketFormData } from '@/types'
 
 export const validateEmail = (email: string): string | undefined => {
   if (!email) return 'Email is required'
@@ -59,6 +59,53 @@ export const validateSignupForm = (
     values.confirmPassword
   )
   if (confirmPasswordError) errors.confirmPassword = confirmPasswordError
+
+  return errors
+}
+
+// Ticket validation functions
+export const validateTicketTitle = (title: string): string | undefined => {
+  if (!title.trim()) return 'Title is required'
+  if (title.length < 3) return 'Title must be at least 3 characters'
+  if (title.length > 100) return 'Title must not exceed 100 characters'
+  return undefined
+}
+
+export const validateTicketDescription = (description: string): string | undefined => {
+  if (description && description.length > 500) {
+    return 'Description must not exceed 500 characters'
+  }
+  return undefined
+}
+
+export const validateTicketStatus = (status: string): string | undefined => {
+  if (!status) return 'Status is required'
+  const validStatuses = ['open', 'in_progress', 'closed']
+  return validStatuses.includes(status) ? undefined : 'Invalid status'
+}
+
+export const validateTicketPriority = (priority: string): string | undefined => {
+  if (!priority) return 'Priority is required'
+  const validPriorities = ['low', 'medium', 'high']
+  return validPriorities.includes(priority) ? undefined : 'Invalid priority'
+}
+
+export const validateTicketForm = (
+  values: TicketFormData
+): Partial<Record<keyof TicketFormData, string>> => {
+  const errors: Partial<Record<keyof TicketFormData, string>> = {}
+
+  const titleError = validateTicketTitle(values.title)
+  if (titleError) errors.title = titleError
+
+  const descriptionError = validateTicketDescription(values.description)
+  if (descriptionError) errors.description = descriptionError
+
+  const statusError = validateTicketStatus(values.status)
+  if (statusError) errors.status = statusError
+
+  const priorityError = validateTicketPriority(values.priority)
+  if (priorityError) errors.priority = priorityError
 
   return errors
 }

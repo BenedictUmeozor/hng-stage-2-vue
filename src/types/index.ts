@@ -53,6 +53,13 @@ export interface Ticket {
   createdAt: string
 }
 
+export interface TicketFormData {
+  title: string
+  description: string
+  status: 'open' | 'in_progress' | 'closed'
+  priority: 'low' | 'medium' | 'high'
+}
+
 export interface StatCardProps {
   icon: Component
   label: string
