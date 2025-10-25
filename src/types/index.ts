@@ -42,3 +42,20 @@ export interface ToastType {
   type: 'success' | 'error' | 'info' | 'warning'
   message: string
 }
+
+// Ticket Management Types
+export interface Ticket {
+  id: string
+  title: string
+  description: string
+  status: 'open' | 'in_progress' | 'closed'
+  priority: 'low' | 'medium' | 'high'
+  createdAt: string
+}
+
+export interface StatCardProps {
+  icon: Component
+  label: string
+  count: number
+  colorClass: string
+}
